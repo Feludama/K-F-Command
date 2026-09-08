@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#14304A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="K&amp;F Command">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Crect%20width='512'%20height='512'%20rx='96'%20fill='%2314304A'/%3E%3Ctext%20x='50%25'%20y='47%25'%20font-family='Georgia,serif'%20font-size='210'%20font-weight='700'%20fill='%23ffffff'%20text-anchor='middle'%3EK%26amp;F%3C/text%3E%3Ctext%20x='50%25'%20y='74%25'%20font-family='Arial,sans-serif'%20font-size='46'%20letter-spacing='5'%20fill='%23b6c6da'%20text-anchor='middle'%3ETOTAL%20CLEAN%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Crect%20width='512'%20height='512'%20rx='96'%20fill='%2314304A'/%3E%3Ctext%20x='50%25'%20y='47%25'%20font-family='Georgia,serif'%20font-size='210'%20font-weight='700'%20fill='%23ffffff'%20text-anchor='middle'%3EK%26amp;F%3C/text%3E%3Ctext%20x='50%25'%20y='74%25'%20font-family='Arial,sans-serif'%20font-size='46'%20letter-spacing='5'%20fill='%23b6c6da'%20text-anchor='middle'%3ETOTAL%20CLEAN%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%20%22K%26F%20Growth%20Command%22%2C%20%22short_name%22%3A%20%22K%26F%20Command%22%2C%20%22description%22%3A%20%2290-day%20command%20center%20to%20build%20K%26F%20Total%20Clean%27s%20recurring%20customer%20base.%22%2C%20%22start_url%22%3A%20%22.%22%2C%20%22scope%22%3A%20%22.%22%2C%20%22display%22%3A%20%22standalone%22%2C%20%22orientation%22%3A%20%22portrait%22%2C%20%22background_color%22%3A%20%22%2314304A%22%2C%20%22theme_color%22%3A%20%22%2314304A%22%2C%20%22icons%22%3A%20%5B%7B%22src%22%3A%20%22data%3Aimage/svg%2Bxml%2C%253Csvg%2520xmlns%3D%27http%3A//www.w3.org/2000/svg%27%2520viewBox%3D%270%25200%2520512%2520512%27%253E%253Crect%2520width%3D%27512%27%2520height%3D%27512%27%2520rx%3D%2796%27%2520fill%3D%27%252314304A%27/%253E%253Ctext%2520x%3D%2750%2525%27%2520y%3D%2747%2525%27%2520font-family%3D%27Georgia%2Cserif%27%2520font-size%3D%27210%27%2520font-weight%3D%27700%27%2520fill%3D%27%2523ffffff%27%2520text-anchor%3D%27middle%27%253EK%2526amp%3BF%253C/text%253E%253Ctext%2520x%3D%2750%2525%27%2520y%3D%2774%2525%27%2520font-family%3D%27Arial%2Csans-serif%27%2520font-size%3D%2746%27%2520letter-spacing%3D%275%27%2520fill%3D%27%2523b6c6da%27%2520text-anchor%3D%27middle%27%253ETOTAL%2520CLEAN%253C/text%253E%253C/svg%253E%22%2C%20%22sizes%22%3A%20%22any%22%2C%20%22type%22%3A%20%22image/svg%2Bxml%22%2C%20%22purpose%22%3A%20%22any%22%7D%5D%7D">
+<title>K&amp;F Growth Command</title>
+<meta name="description" content="90-day command center to build K&amp;F Total Clean's recurring customer base.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
+<style>
+:root{
+  --paper:#F2F4F8; --surface:#FFFFFF; --surface-2:#F8FAFC; --line:#E0E5EC;
+  --ink:#16232F; --ink-soft:#4A5764; --ink-faint:#7C8794;
+  --spruce:#1E4A73; --spruce-deep:#14304A; --spruce-tint:#E6EDF4;
+  --amber:#D98A16; --amber-tint:#FBEFD6;
+  --s-lead:#5C7796; --s-contacted:#7A6AA6; --s-quoted:#C6871B; --s-booked:#1E8A72; --s-recurring:#2C8A54;
+  --good:#2C8A54; --warn:#C6871B; --crit:#C1554A;
+  --shadow:0 1px 2px rgba(24,36,32,.05),0 6px 20px rgba(24,36,32,.06);
+  --shadow-lift:0 2px 6px rgba(24,36,32,.08),0 14px 34px rgba(24,36,32,.12);
+  --r:14px; --r-sm:10px;
+}
+:root:not([data-theme="light"]){
+  @media (prefers-color-scheme:dark){
+    --paper:#0D141C; --surface:#152130; --surface-2:#111A26; --line:#28323F;
+    --ink:#E7EDF4; --ink-soft:#A4B0BD; --ink-faint:#72808E;
+    --spruce:#5E9BD1; --spruce-deep:#3E77A8; --spruce-tint:#16283A;
+    --amber:#E7A63C; --amber-tint:#3A2C14;
+    --s-lead:#82A0C0; --s-contacted:#A192CE; --s-quoted:#DCA43A; --s-booked:#37B394; --s-recurring:#48B877;
+    --good:#48B877; --warn:#DCA43A; --crit:#DB7A6E;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+    --shadow-lift:0 2px 6px rgba(0,0,0,.4),0 14px 34px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0D141C; --surface:#152130; --surface-2:#111A26; --line:#28323F;
+  --ink:#E7EDF4; --ink-soft:#A4B0BD; --ink-faint:#72808E;
+  --spruce:#5E9BD1; --spruce-deep:#3E77A8; --spruce-tint:#16283A;
+  --amber:#E7A63C; --amber-tint:#3A2C14;
+  --s-lead:#82A0C0; --s-contacted:#A192CE; --s-quoted:#DCA43A; --s-booked:#37B394; --s-recurring:#48B877;
+  --good:#48B877; --warn:#DCA43A; --crit:#DB7A6E;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+  --shadow-lift:0 2px 6px rgba(0,0,0,.4),0 14px 34px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Hanken Grotesk",system-ui,-apple-system,sans-serif;
+  font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:80px}
+h1,h2,h3{font-family:"Archivo",system-ui,sans-serif;margin:0;text-wrap:balance;letter-spacing:-.01em}
+button{font-family:inherit;cursor:pointer}
+.mono{font-family:"Space Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+
+/* Header */
+header{background:linear-gradient(160deg,var(--spruce-deep),var(--spruce));color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.08)}
+.hd{display:flex;align-items:center;gap:14px;padding:18px 0 6px}
+.brandtile{background:#fff;border-radius:12px;padding:7px 14px;flex:0 0 auto;
+  box-shadow:0 2px 10px rgba(0,0,0,.18);display:flex;flex-direction:column;align-items:center;line-height:1}
+.bk{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:27px;color:#14304A;letter-spacing:.5px}
+.bt{font-family:Arial,Helvetica,sans-serif;font-size:7.5px;font-weight:700;letter-spacing:3px;color:#5C7796;margin-top:2px}
+.hd h1{font-size:20px;font-weight:800;color:#fff;line-height:1.05}
+.hd .sub{font-size:12.5px;color:rgba(255,255,255,.72);margin-top:2px}
+.hd .spacer{flex:1}
+.theme-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;
+  width:38px;height:38px;border-radius:10px;font-size:16px;display:grid;place-items:center}
+.daybar{display:flex;align-items:center;gap:14px;padding:6px 0 18px;flex-wrap:wrap}
+.daychip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;
+  padding:6px 13px;font-size:12.5px;font-weight:600;display:flex;align-items:center;gap:7px;color:#fff}
+.daychip b{font-family:"Space Mono",monospace}
+.progline{flex:1;min-width:160px;height:8px;background:rgba(255,255,255,.18);border-radius:99px;overflow:hidden}
+.progline i{display:block;height:100%;background:var(--amber);border-radius:99px;transition:width .5s}
+
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:-30px 0 8px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 15px;box-shadow:var(--shadow)}
+.kpi .lab{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);display:flex;align-items:center;gap:6px}
+.kpi .dot{width:8px;height:8px;border-radius:99px;flex:0 0 auto}
+.kpi .val{font-family:"Space Mono",monospace;font-size:29px;font-weight:700;line-height:1.1;margin-top:8px;letter-spacing:-.02em}
+.kpi .val small{font-size:15px;font-weight:400;color:var(--ink-faint)}
+.kpi .meta{font-size:12px;color:var(--ink-soft);margin-top:3px}
+.mini{height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:10px}
+.mini i{display:block;height:100%;border-radius:99px;background:var(--spruce);transition:width .5s}
+
+/* Tabs */
+.tabs{display:flex;gap:4px;margin:22px 0 16px;background:var(--surface-2);border:1px solid var(--line);
+  border-radius:12px;padding:5px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{border:0;background:transparent;color:var(--ink-soft);font-weight:600;font-size:13.5px;
+  padding:9px 15px;border-radius:8px;white-space:nowrap;flex:1;min-width:max-content}
+.tab[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.panel[hidden]{display:none}
+
+.secttl{display:flex;align-items:baseline;gap:10px;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap}
+.secttl h2{font-size:19px;font-weight:700}
+.secttl p{margin:2px 0 0;font-size:13px;color:var(--ink-soft)}
+
+/* Pipeline board */
+.board{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x proximity}
+.board::-webkit-scrollbar{height:8px}
+.board::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}
+.col{flex:0 0 250px;scroll-snap-align:start;background:var(--surface-2);border:1px solid var(--line);
+  border-radius:var(--r);padding:11px;min-height:120px}
+.col.drop{outline:2px dashed var(--spruce);outline-offset:-3px}
+.colhd{display:flex;align-items:center;gap:8px;margin-bottom:10px;padding:0 3px}
+.colhd .cdot{width:9px;height:9px;border-radius:99px;flex:0 0 auto}
+.colhd h3{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.colhd .ct{margin-left:auto;font-family:"Space Mono",monospace;font-size:12px;color:var(--ink-faint);
+  background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:1px 8px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:11px 12px;
+  margin-bottom:9px;box-shadow:var(--shadow);cursor:grab;position:relative}
+.card:active{cursor:grabbing}
+.card.ex{opacity:.62;border-style:dashed;cursor:default}
+.card .nm{font-weight:700;font-size:14.5px;display:flex;align-items:center;gap:6px}
+.card .line{font-size:12.5px;color:var(--ink-soft);margin-top:3px;display:flex;flex-wrap:wrap;gap:4px 9px}
+.card .line .mono{color:var(--ink)}
+.tagpill{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:99px;
+  background:var(--amber-tint);color:var(--amber)}
+.card .mv{margin-top:9px;display:flex;gap:6px;align-items:center}
+.card .mv button{border:1px solid var(--line);background:var(--surface-2);color:var(--ink-soft);
+  border-radius:8px;padding:4px 8px;font-size:12px;font-weight:600}
+.card .mv .adv{background:var(--spruce-tint);color:var(--spruce-deep);border-color:transparent}
+.card .mv .wa{margin-left:auto;background:#25D366;border-color:transparent;color:#fff;font-size:13px;padding:4px 9px}
+.card .mv .del{color:var(--crit);border:0;background:transparent;padding:4px 6px}
+.card .line .nextd{color:var(--spruce);font-weight:600}
+.card .nm::after{content:"✎";float:right;color:var(--ink-faint);font-size:12px;opacity:.6}
+.emptycol{font-size:12.5px;color:var(--ink-faint);text-align:center;padding:14px 6px;border:1px dashed var(--line);border-radius:var(--r-sm)}
+.exnote{font-size:12px;color:var(--ink-soft);background:var(--amber-tint);border:1px solid transparent;
+  border-radius:10px;padding:8px 12px;margin-bottom:12px;display:flex;gap:8px;align-items:center}
+.exnote[hidden]{display:none!important}
+
+/* Playbook */
+.phase{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:14px;
+  box-shadow:var(--shadow);overflow:hidden}
+.phase-hd{display:flex;align-items:center;gap:13px;padding:15px 16px;width:100%;border:0;background:transparent;text-align:left;color:var(--ink)}
+.pnum{font-family:"Space Mono",monospace;font-weight:700;font-size:13px;width:34px;height:34px;border-radius:9px;
+  display:grid;place-items:center;flex:0 0 auto;background:var(--spruce-tint);color:var(--spruce-deep)}
+.phase.active .pnum{background:var(--spruce);color:#fff}
+.phase-hd .pt{flex:1;min-width:0}
+.phase-hd .pt h3{font-size:16px;font-weight:700}
+.phase-hd .pt .days{font-size:12px;color:var(--ink-faint);font-weight:600;letter-spacing:.03em}
+.phase-hd .pt .foc{font-size:13px;color:var(--ink-soft);margin-top:2px}
+.pctwrap{display:flex;align-items:center;gap:9px;flex:0 0 auto}
+.ring{--p:0;width:40px;height:40px;border-radius:99px;flex:0 0 auto;
+  background:conic-gradient(var(--spruce) calc(var(--p)*1%),var(--line) 0);display:grid;place-items:center}
+.ring b{width:30px;height:30px;border-radius:99px;background:var(--surface);display:grid;place-items:center;
+  font-family:"Space Mono",monospace;font-size:10.5px;font-weight:700}
+.caret{color:var(--ink-faint);transition:transform .25s;flex:0 0 auto}
+.phase.open .caret{transform:rotate(90deg)}
+.phase-body{display:none;padding:0 16px 14px}
+.phase.open .phase-body{display:block}
+.acts{border-top:1px solid var(--line);margin-top:2px}
+.act{display:flex;gap:11px;padding:11px 2px;border-bottom:1px solid var(--line);align-items:flex-start}
+.act:last-child{border-bottom:0}
+.act input{appearance:none;width:21px;height:21px;border:2px solid var(--line);border-radius:6px;flex:0 0 auto;
+  margin-top:1px;position:relative;transition:.15s;background:var(--surface)}
+.act input:checked{background:var(--spruce);border-color:var(--spruce)}
+.act input:checked::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;
+  border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+.act input:focus-visible{outline:2px solid var(--spruce);outline-offset:2px}
+.act .tx{font-size:14px;line-height:1.45}
+.act.done .tx{color:var(--ink-faint);text-decoration:line-through}
+.act .tx small{display:block;color:var(--ink-faint);font-size:12px;text-decoration:none;margin-top:2px}
+.wk{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--spruce);
+  padding:14px 2px 4px;border-top:1px solid var(--line)}
+.wk:first-child{border-top:0}
+
+/* Targets / math */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.blk{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:17px 18px;box-shadow:var(--shadow)}
+.blk h3{font-size:16px;font-weight:700;margin-bottom:3px}
+.blk .hint{font-size:12.5px;color:var(--ink-soft);margin-bottom:14px}
+.fld{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.fld:last-child{border-bottom:0}
+.fld label{font-size:13.5px;color:var(--ink-soft)}
+.fld .inp{display:flex;align-items:center;gap:2px}
+.fld .inp span{color:var(--ink-faint);font-size:13px}
+.fld input{width:80px;text-align:right;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);
+  border-radius:8px;padding:6px 9px;font-family:"Space Mono",monospace;font-size:14px;font-weight:700}
+.fld input:focus{outline:2px solid var(--spruce);outline-offset:1px}
+.result{margin-top:15px;padding:15px;border-radius:var(--r-sm);background:var(--spruce-tint);border:1px solid transparent}
+.result .rrow{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0}
+.result .rrow .k{font-size:13px;color:var(--spruce-deep);font-weight:600}
+.result .rrow .v{font-family:"Space Mono",monospace;font-weight:700;font-size:20px;color:var(--spruce-deep)}
+.result .rrow.big .v{font-size:26px}
+.pace{font-size:12.5px;color:var(--ink-soft);margin-top:12px;line-height:1.5}
+.pace b{color:var(--ink)}
+
+/* Add form */
+.addbtn{border:0;background:var(--spruce);color:#fff;font-weight:700;font-size:13.5px;border-radius:10px;
+  padding:9px 15px;box-shadow:var(--shadow);display:inline-flex;align-items:center;gap:7px}
+.addbtn:hover{background:var(--spruce-deep)}
+dialog{border:1px solid var(--line);border-radius:16px;padding:0;background:var(--surface);color:var(--ink);
+  box-shadow:var(--shadow-lift);width:min(440px,92vw)}
+dialog::backdrop{background:rgba(12,20,17,.5);backdrop-filter:blur(2px)}
+.dlg-hd{padding:16px 18px 4px}
+.dlg-hd h3{font-size:17px;font-weight:700}
+.dlg-hd p{font-size:12.5px;color:var(--ink-soft);margin:2px 0 0}
+.form{padding:12px 18px 4px;display:grid;gap:11px}
+.form .row{display:grid;gap:5px}
+.form label{font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-faint)}
+.form input,.form select{border:1px solid var(--line);background:var(--surface-2);color:var(--ink);
+  border-radius:9px;padding:10px 11px;font-family:inherit;font-size:14.5px}
+.form input:focus,.form select:focus{outline:2px solid var(--spruce);outline-offset:1px}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.dlg-ft{display:flex;gap:9px;justify-content:flex-end;padding:14px 18px 18px}
+.dlg-ft button{border-radius:10px;padding:10px 16px;font-weight:700;font-size:14px;border:1px solid var(--line)}
+.dlg-ft .cancel{background:var(--surface-2);color:var(--ink-soft)}
+.dlg-ft .save{background:var(--spruce);color:#fff;border-color:transparent}
+
+.status{font-size:11.5px;color:var(--ink-faint);display:flex;align-items:center;gap:6px;justify-content:center;padding:22px 0 4px}
+.status .lv{width:7px;height:7px;border-radius:99px;background:var(--good)}
+.status .lv.local{background:var(--warn)}
+footer{padding:14px 0 30px;text-align:center;font-size:12px;color:var(--ink-faint)}
+
+@media (max-width:820px){
+  .kpis{grid-template-columns:1fr 1fr}
+  .grid2{grid-template-columns:1fr}
+}
+@media (max-width:440px){
+  .hd h1{font-size:18px}
+  .kpi .val{font-size:25px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="hd">
+      <div class="brandtile"><span class="bk">K&amp;F</span><span class="bt">TOTAL&nbsp;CLEAN</span></div>
+      <div>
+        <h1>Growth Command</h1>
+        <div class="sub">90-day recurring-customer build</div>
+      </div>
+      <div class="spacer"></div>
+      <button class="theme-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">◐</button>
+    </div>
+    <div class="daybar">
+      <span class="daychip">DAY <b id="dayNum">1</b> / 90</span>
+      <div class="progline" aria-hidden="true"><i id="dayProg" style="width:1%"></i></div>
+      <span class="daychip" id="daysLeftChip"><b id="daysLeft">90</b> days left</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="kpis" aria-label="Key metrics">
+    <div class="kpi">
+      <div class="lab"><span class="dot" style="background:var(--s-recurring)"></span>Recurring clients</div>
+      <div class="val mono"><span id="recCount">0</span><small> / <span id="recGoal">15</span></small></div>
+      <div class="meta" id="recMeta">Locked-in repeat customers</div>
+      <div class="mini"><i id="recBar" style="width:0%"></i></div>
+    </div>
+    <div class="kpi">
+      <div class="lab"><span class="dot" style="background:var(--spruce)"></span>Monthly recurring $</div>
+      <div class="val mono">$<span id="mrr">0</span></div>
+      <div class="meta">From current recurring routes</div>
+      <div class="mini"><i id="mrrBar" style="width:0%;background:var(--amber)"></i></div>
+    </div>
+    <div class="kpi">
+      <div class="lab"><span class="dot" style="background:var(--s-lead)"></span>Active pipeline</div>
+      <div class="val mono" id="pipeCount">0</div>
+      <div class="meta" id="pipeMeta">Leads still in play</div>
+    </div>
+    <div class="kpi">
+      <div class="lab"><span class="dot" style="background:var(--amber)"></span>Booked this build</div>
+      <div class="val mono" id="wonCount">0</div>
+      <div class="meta">First cleans + recurring</div>
+    </div>
+  </section>
+
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <button class="tab" role="tab" aria-selected="true" data-panel="pipeline">Pipeline</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="playbook">90-Day Playbook</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="targets">Targets &amp; Math</button>
+  </nav>
+
+  <section class="panel" id="pipeline" role="tabpanel">
+    <div class="secttl">
+      <div>
+        <h2>Customer pipeline</h2>
+        <p>Move every lead toward a locked recurring route. Drag a card, or tap advance.</p>
+      </div>
+      <button class="addbtn" id="addBtn">+ Add customer</button>
+    </div>
+    <div class="exnote" id="exNote" hidden>
+      <span>🧽</span><span>No customers yet. Tap <b>+ Add customer</b> to log your first lead — your numbers stay at zero until then.</span>
+    </div>
+    <div class="board" id="board"></div>
+  </section>
+
+  <section class="panel" id="playbook" role="tabpanel" hidden>
+    <div class="secttl">
+      <div>
+        <h2>The 90-day playbook</h2>
+        <p>Three 30-day pushes: get booked, build routes, run without you. Check items as you finish.</p>
+      </div>
+    </div>
+    <div id="phases"></div>
+  </section>
+
+  <section class="panel" id="targets" role="tabpanel" hidden>
+    <div class="secttl"><div><h2>Targets &amp; recurring math</h2><p>Set the goal, see what it takes, track the pace.</p></div></div>
+    <div class="grid2">
+      <div class="blk">
+        <h3>Your 90-day goal</h3>
+        <div class="hint">The number that means "the company works for me."</div>
+        <div class="fld"><label>Recurring clients target</label><div class="inp"><input id="tGoal" type="number" min="1" value="15"></div></div>
+        <div class="fld"><label>Avg. price per clean</label><div class="inp"><span>$</span><input id="tPrice" type="number" min="0" value="140"></div></div>
+        <div class="fld"><label>Cleans per client / month</label><div class="inp"><input id="tFreq" type="number" min="0" step="0.1" value="2.2"></div></div>
+        <div class="pace" id="paceNote"></div>
+      </div>
+      <div class="blk">
+        <h3>What the goal is worth</h3>
+        <div class="hint">Projected monthly recurring revenue at target.</div>
+        <div class="result">
+          <div class="rrow"><span class="k">Revenue per client / month</span><span class="v mono">$<span id="perClient">0</span></span></div>
+          <div class="rrow big"><span class="k">Projected MRR at goal</span><span class="v mono">$<span id="projMrr">0</span></span></div>
+          <div class="rrow"><span class="k">Annualized</span><span class="v mono">$<span id="projYr">0</span></span></div>
+        </div>
+        <div class="pace" id="gapNote"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="status" id="status"><span class="lv" id="statusLv"></span><span id="statusTx">Syncing…</span></div>
+  <footer>K&amp;F Total Clean · Houston · built for the Operator 180 push</footer>
+</main>
+
+<dialog id="dlg">
+  <div class="dlg-hd"><h3 id="dlgTitle">Add customer</h3><p>A lead, a first-clean, or a locked recurring client.</p></div>
+  <form method="dialog" class="form" id="custForm">
+    <div class="row"><label for="fName">Name</label><input id="fName" required placeholder="e.g. Maria — Spring Branch"></div>
+    <div class="two">
+      <div class="row"><label for="fPhone">Phone / WhatsApp</label><input id="fPhone" placeholder="Optional"></div>
+      <div class="row"><label for="fSource">Source</label>
+        <select id="fSource"><option>Referral</option><option>Google / Maps</option><option>Facebook group</option><option>Nextdoor</option><option>Flyer / door</option><option>Realtor / partner</option><option>Repeat / walk-up</option><option>Other</option></select></div>
+    </div>
+    <div class="two">
+      <div class="row"><label for="fStage">Stage</label>
+        <select id="fStage"><option value="lead">Lead</option><option value="contacted">Contacted</option><option value="quoted">Quoted</option><option value="booked">Booked</option><option value="recurring">Recurring</option></select></div>
+      <div class="row"><label for="fPrice">Price / clean ($)</label><input id="fPrice" type="number" min="0" placeholder="140"></div>
+    </div>
+    <div class="two">
+      <div class="row"><label for="fFreq">If recurring — cleans / month</label>
+        <select id="fFreq"><option value="0">One-time / not set</option><option value="4.33">Weekly (4.3)</option><option value="2.17">Biweekly (2.2)</option><option value="1">Monthly (1)</option></select></div>
+      <div class="row"><label for="fNext">Next clean date</label><input id="fNext" type="date"></div>
+    </div>
+    <div class="row"><label for="fNotes">Notes</label><input id="fNotes" placeholder="Beds/baths, gate code, access…"></div>
+  </form>
+  <div class="dlg-ft">
+    <button class="cancel" id="dlgCancel">Cancel</button>
+    <button class="save" id="dlgSave">Save customer</button>
+  </div>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+/* ---------- Campaign clock ---------- */
+const START = new Date('2026-09-08T06:00:00-05:00');
+const TOTAL = 90;
+function campaignDay(){
+  const ms = Date.now() - START.getTime();
+  return Math.min(TOTAL, Math.max(1, Math.floor(ms/86400000)+1));
+}
+
+/* ---------- Stages ---------- */
+const STAGES = [
+  {k:'lead',      t:'Lead',      c:'var(--s-lead)'},
+  {k:'contacted', t:'Contacted', c:'var(--s-contacted)'},
+  {k:'quoted',    t:'Quoted',    c:'var(--s-quoted)'},
+  {k:'booked',    t:'Booked',    c:'var(--s-booked)'},
+  {k:'recurring', t:'Recurring', c:'var(--s-recurring)'},
+];
+const stageIdx = k => STAGES.findIndex(s=>s.k===k);
+
+/* ---------- Playbook content ---------- */
+const PHASES = [
+  {id:'p1', t:'Get booked', days:'Days 1–30', foc:'Live offer, listings, and your first paying cleans.', groups:[
+    {wk:'Offer & pricing', items:[
+      {id:'p1a1', tx:'Lock one clear offer', sub:'e.g. "First deep clean, then biweekly recurring at a set rate." One offer, easy yes.'},
+      {id:'p1a2', tx:'Write a simple price sheet', sub:'Standard / deep / move-out by beds & baths, in English and Spanish.'},
+    ]},
+    {wk:'Get findable', items:[
+      {id:'p1a3', tx:'Google Business Profile live', sub:'Photos, service area, hours, WhatsApp button — this drives free local leads.'},
+      {id:'p1a4', tx:'Finish knftotalclean.com', sub:'Connect the DNS, WhatsApp lead form working, before/after photos up.'},
+      {id:'p1a5', tx:'Post in 5 Houston Facebook groups + Nextdoor', sub:'Neighborhood + "recommendations" groups. Real photos, not stock.'},
+    ]},
+    {wk:'First customers', items:[
+      {id:'p1a6', tx:'Ask 10 people you know for one job or intro', sub:'Warm network books faster than any ad. Direct message, be specific.'},
+      {id:'p1a7', tx:'Door hangers / flyers in 3 target neighborhoods', sub:'Pick areas with houses close together — future route density.'},
+      {id:'p1a8', tx:'Book your first 5 paying cleans', sub:'This is the Phase 1 finish line. Deliver hard on every one.'},
+      {id:'p1a9', tx:'After each clean: ask for a Google review + rebook', sub:'Ask on the spot, while they can see the sparkle. Both, every time.'},
+    ]},
+  ]},
+  {id:'p2', t:'Build routes', days:'Days 31–60', foc:'Turn one-time jobs into recurring clients, reviews, and referrals.', groups:[
+    {wk:'Convert to recurring', items:[
+      {id:'p2a1', tx:'Offer every one-time client a recurring plan', sub:'Weekly / biweekly / monthly with a small loyalty discount. Ask directly.'},
+      {id:'p2a2', tx:'Set up a simple scheduling calendar', sub:'One place for every appointment so nothing gets double-booked.'},
+      {id:'p2a3', tx:'Standardize a per-job cleaning checklist', sub:'Consistent quality is what keeps recurring clients. Same rooms, same order.'},
+    ]},
+    {wk:'Reviews & referrals', items:[
+      {id:'p2a4', tx:'Reach 10+ Google reviews', sub:'Text the review link the same day. Social proof compounds.'},
+      {id:'p2a5', tx:'Launch a referral offer', sub:'Give a credit for each referred client who books. Tell every happy client.'},
+    ]},
+    {wk:'Repeat-work partners', items:[
+      {id:'p2a6', tx:'Line up 2 partners for steady work', sub:'Realtors (move-outs), Airbnb hosts (turnovers), property managers.'},
+      {id:'p2a7', tx:'Run one small local ad to your best neighborhood', sub:'Tight radius, your best photos + reviews. Track cost per booked job.'},
+      {id:'p2a8', tx:'Hit 8 recurring clients', sub:'Phase 2 finish line — routes, not one-offs.'},
+    ]},
+  ]},
+  {id:'p3', t:'Run without you', days:'Days 61–90', foc:'Systemize and add hands so the business runs when you step back.', groups:[
+    {wk:'Systemize', items:[
+      {id:'p3a1', tx:'Write your cleaning SOP', sub:'Document exactly how you clean so someone else can do it your way.'},
+      {id:'p3a2', tx:'Auto-reminders for recurring appointments', sub:'WhatsApp reminder the day before — cuts no-shows, feels professional.'},
+      {id:'p3a3', tx:'Cluster clients by area (route density)', sub:'Group appointments by neighborhood/day to cut drive time and fit more jobs.'},
+    ]},
+    {wk:'Add hands', items:[
+      {id:'p3a4', tx:'Hire or subcontract 1 cleaner', sub:'Train on the SOP, ride along once, then hand off jobs.'},
+      {id:'p3a5', tx:'Move yourself from cleaning to running it', sub:'Your time goes to scheduling, quality checks, and sales.'},
+    ]},
+    {wk:'Grow the base', items:[
+      {id:'p3a6', tx:'Upsell add-ons to recurring clients', sub:'Fridge, oven, windows, laundry — more revenue per visit.'},
+      {id:'p3a7', tx:'Ask recurring clients for a referral monthly', sub:'Your happiest clients are your best salespeople. Make it a habit.'},
+      {id:'p3a8', tx:'Reach 15 recurring clients + a repeatable weekly schedule', sub:'Day 90 finish line: a business that books, cleans, and rebooks itself.'},
+    ]},
+  ]},
+];
+const ALL_ACT_IDS = PHASES.flatMap(p=>p.groups.flatMap(g=>g.items.map(i=>i.id)));
+
+
+/* ---------- State ---------- */
+let customers = [];      // real customers
+let checks = {};         // {actId:true}
+let targets = {goal:15, price:140, freq:2.2};
+
+/* ---------- Supabase config ---------- */
+const SB_URL='https://rpwimzdkhejleezeihiq.supabase.co';
+const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwd2ltemRraGVqbGVlemVpaGlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4OTc2ODIsImV4cCI6MjA5NzQ3MzY4Mn0.anoh4PW6DECw7rHR4zHMzoe6GK1IlYsoZimfldsv7UM';
+let sb=null, saveTimer=null, lastPushed='';
+
+/* ---------- Persistence: Supabase whole-state + localStorage backup ---------- */
+const LS = {
+  load(){
+    try{
+      customers = JSON.parse(localStorage.getItem('knf_customers')||'[]');
+      checks = JSON.parse(localStorage.getItem('knf_checks')||'{}');
+      targets = Object.assign(targets, JSON.parse(localStorage.getItem('knf_targets')||'{}'));
+    }catch(e){}
+  },
+  saveAll(){
+    try{
+      localStorage.setItem('knf_customers',JSON.stringify(customers));
+      localStorage.setItem('knf_checks',JSON.stringify(checks));
+      localStorage.setItem('knf_targets',JSON.stringify(targets));
+    }catch(e){}
+  }
+};
+function currentState(){ return {customers, checks, targets}; }
+function applyState(d){
+  if(!d||typeof d!=='object') return;
+  customers = Array.isArray(d.customers)? d.customers : [];
+  checks = (d.checks && typeof d.checks==='object') ? d.checks : {};
+  targets = Object.assign({goal:15,price:140,freq:2.2}, d.targets||{});
+  LS.saveAll(); syncTargetInputs(); renderAll();
+}
+function saveState(){
+  LS.saveAll();
+  if(!sb) return;
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(async()=>{
+    const payload=JSON.stringify(currentState());
+    lastPushed=payload;
+    try{ await sb.from('knf_state').upsert({id:'main', data:currentState(), updated_at:new Date().toISOString()}); }catch(e){}
+  }, 500);
+}
+// keep the same names the rest of the app calls
+function persistCustomer(){ saveState(); }
+function persistChecks(){ saveState(); }
+function persistTargets(){ saveState(); }
+function removeCustomer(id){ customers=customers.filter(c=>c.id!==id); saveState(); renderAll(); }
+
+async function initStore(){
+  LS.load(); syncTargetInputs(); renderAll();   // instant paint from local
+  if(!window.supabase){ setStatus(false); return; }
+  try{
+    sb = window.supabase.createClient(SB_URL, SB_KEY);
+    const {data, error} = await sb.from('knf_state').select('data').eq('id','main').maybeSingle();
+    if(error) throw error;
+    if(data && data.data && (Array.isArray(data.data.customers))) applyState(data.data);
+    else if(customers.length||Object.keys(checks).length) saveState(); // seed remote from local
+    sb.channel('knf_state_main')
+      .on('postgres_changes',{event:'*',schema:'public',table:'knf_state',filter:'id=eq.main'},payload=>{
+        const nd=payload.new && payload.new.data;
+        if(nd && JSON.stringify(nd)!==lastPushed) applyState(nd);
+      }).subscribe();
+    setStatus(true);
+  }catch(e){ sb=null; setStatus(false); }
+}
+function setStatus(live){
+  const lv=document.getElementById('statusLv'), tx=document.getElementById('statusTx');
+  if(live){ lv.className='lv'; tx.textContent='Live — synced across your devices'; }
+  else { lv.className='lv local'; tx.textContent='Saved on this device (offline)'; }
+}
+
+/* ---------- Derived metrics ---------- */
+const activeList = ()=> customers.length ? customers : []; // examples handled in render
+function metrics(){
+  const list = customers;
+  const recurring = list.filter(c=>c.stage==='recurring');
+  const mrr = recurring.reduce((s,c)=> s + (Number(c.price)||0)*(Number(c.freq)||0), 0);
+  const active = list.filter(c=>c.stage!=='recurring').length;
+  const won = list.filter(c=>c.stage==='booked'||c.stage==='recurring').length;
+  return {recurring:recurring.length, mrr:Math.round(mrr), active, won, empty: customers.length===0};
+}
+
+/* ---------- Render ---------- */
+function renderHeader(){
+  const d=campaignDay();
+  document.getElementById('dayNum').textContent=d;
+  document.getElementById('daysLeft').textContent=Math.max(0,TOTAL-d);
+  document.getElementById('dayProg').style.width=(d/TOTAL*100)+'%';
+}
+function renderKpis(){
+  const m=metrics();
+  document.getElementById('recCount').textContent=m.recurring;
+  document.getElementById('recGoal').textContent=targets.goal;
+  document.getElementById('mrr').textContent=m.mrr.toLocaleString();
+  document.getElementById('pipeCount').textContent=m.active;
+  document.getElementById('wonCount').textContent=m.won;
+  const recPct=Math.min(100, targets.goal? m.recurring/targets.goal*100:0);
+  document.getElementById('recBar').style.width=recPct+'%';
+  const goalMrr=targets.goal*targets.price*targets.freq;
+  document.getElementById('mrrBar').style.width=(goalMrr? Math.min(100,m.mrr/goalMrr*100):0)+'%';
+  document.getElementById('recMeta').textContent = m.empty? 'Add your first client' : (targets.goal-m.recurring>0? (targets.goal-m.recurring)+' to go' : 'Goal reached 🎉');
+  document.getElementById('pipeMeta').textContent = m.active+' still in play';
+}
+function customerCard(c){
+  const st=STAGES[stageIdx(c.stage)]||STAGES[0];
+  const idx=stageIdx(c.stage);
+  const price = c.price? '$'+Number(c.price)+(c.freq>0?('·'+(c.freq>=4?'wk':c.freq>=2?'2wk':'mo')):'') : '';
+  const el=document.createElement('div');
+  el.className='card'+(c.ex?' ex':'');
+  el.draggable=!c.ex;
+  el.dataset.id=c.id;
+  const nd = fmtDate(c.nextClean);
+  el.innerHTML=`
+    <div class="nm">${esc(c.name)}</div>
+    <div class="line">
+      <span>${esc(c.source||'')}</span>
+      ${price?`<span class="mono">${price}</span>`:''}
+      ${nd?`<span class="nextd">📅 ${nd}</span>`:''}
+      ${c.notes?`<span>${esc(c.notes)}</span>`:''}
+    </div>
+    <div class="mv">
+      ${idx>0?`<button data-act="back" title="Move back">←</button>`:''}
+      ${idx<STAGES.length-1?`<button class="adv" data-act="adv">Advance →</button>`:'<span class="tagpill" style="background:var(--spruce-tint);color:var(--spruce-deep)">Locked in</span>'}
+      ${c.phone?`<button class="wa" data-act="wa" title="WhatsApp reminder">💬</button>`:''}
+      <button class="del" data-act="del" title="Remove">✕</button>
+    </div>
+  `;
+  return el;
+}
+function renderBoard(){
+  const board=document.getElementById('board');
+  board.innerHTML='';
+  const m=metrics();
+  document.getElementById('exNote').hidden = !m.empty;
+  const list = customers;
+  STAGES.forEach(s=>{
+    const col=document.createElement('div');
+    col.className='col'; col.dataset.stage=s.k;
+    const inCol=list.filter(c=>c.stage===s.k);
+    col.innerHTML=`<div class="colhd"><span class="cdot" style="background:${s.c}"></span><h3>${s.t}</h3><span class="ct">${inCol.length}</span></div>`;
+    if(inCol.length===0){ const e=document.createElement('div'); e.className='emptycol'; e.textContent='—'; col.appendChild(e); }
+    inCol.forEach(c=> col.appendChild(customerCard(c)));
+    board.appendChild(col);
+  });
+  wireBoard();
+}
+function renderPhases(){
+  const wrap=document.getElementById('phases');
+  const day=campaignDay();
+  const activePhase = day<=30?0:day<=60?1:2;
+  wrap.innerHTML='';
+  PHASES.forEach((p,pi)=>{
+    const total=p.groups.flatMap(g=>g.items).length;
+    const done=p.groups.flatMap(g=>g.items).filter(i=>checks[i.id]).length;
+    const pct=total?Math.round(done/total*100):0;
+    const ph=document.createElement('div');
+    ph.className='phase'+(pi===activePhase?' active open':'');
+    let body='<div class="phase-body"><div class="acts">';
+    p.groups.forEach(g=>{
+      body+=`<div class="wk">${g.wk}</div>`;
+      g.items.forEach(i=>{
+        const ck=checks[i.id];
+        body+=`<label class="act${ck?' done':''}"><input type="checkbox" data-act-id="${i.id}" ${ck?'checked':''}><span class="tx">${i.tx}<small>${i.sub}</small></span></label>`;
+      });
+    });
+    body+='</div></div>';
+    ph.innerHTML=`
+      <button class="phase-hd" data-phase-toggle>
+        <span class="pnum">${pi+1}</span>
+        <span class="pt"><span class="days">${p.days} · Phase ${pi+1}</span><h3>${p.t}</h3><span class="foc">${p.foc}</span></span>
+        <span class="pctwrap">
+          <span class="ring" style="--p:${pct}"><b>${pct}%</b></span>
+          <svg class="caret" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </span>
+      </button>${body}`;
+    wrap.appendChild(ph);
+  });
+  wrap.querySelectorAll('[data-phase-toggle]').forEach(b=>{
+    b.addEventListener('click',()=> b.closest('.phase').classList.toggle('open'));
+  });
+  wrap.querySelectorAll('input[data-act-id]').forEach(cb=>{
+    cb.addEventListener('change',()=>{
+      const id=cb.getAttribute('data-act-id');
+      if(cb.checked) checks[id]=true; else delete checks[id];
+      persistChecks(); renderPhases(); renderKpis();
+    });
+  });
+}
+function renderTargets(){
+  const perClient=targets.price*targets.freq;
+  const projMrr=targets.goal*perClient;
+  document.getElementById('perClient').textContent=Math.round(perClient).toLocaleString();
+  document.getElementById('projMrr').textContent=Math.round(projMrr).toLocaleString();
+  document.getElementById('projYr').textContent=Math.round(projMrr*12).toLocaleString();
+  const day=campaignDay(), m=metrics();
+  const need=Math.max(0,targets.goal-m.recurring);
+  const weeksLeft=Math.max(1,Math.ceil((TOTAL-day)/7));
+  const perWeek=(need/weeksLeft);
+  document.getElementById('paceNote').innerHTML=
+    `To hit <b>${targets.goal}</b> recurring by Day 90 you need about <b>${perWeek.toFixed(1)} new recurring client${perWeek>=1.5?'s':''} per week</b> from here (${weeksLeft} weeks left).`;
+  document.getElementById('gapNote').innerHTML= m.empty
+    ? `Add your clients to track the live gap.`
+    : `You're at <b>${m.recurring}</b> of ${targets.goal} — <b>${need}</b> to go, worth about <b>$${Math.round(need*perClient).toLocaleString()}/mo</b> more.`;
+}
+function syncTargetInputs(){
+  document.getElementById('tGoal').value=targets.goal;
+  document.getElementById('tPrice').value=targets.price;
+  document.getElementById('tFreq').value=targets.freq;
+}
+function renderAll(){ renderHeader(); renderKpis(); renderBoard(); renderPhases(); renderTargets(); }
+
+/* ---------- Board interactions ---------- */
+function wireBoard(){
+  document.querySelectorAll('.card .mv button').forEach(b=>{
+    b.addEventListener('click',e=>{
+      e.stopPropagation();
+      const card=b.closest('.card'); const id=card.dataset.id; const act=b.dataset.act;
+      const c=customers.find(x=>x.id===id); if(!c) return;
+      if(act==='del'){ if(confirm('Remove '+c.name+'?')) removeCustomer(id); return; }
+      if(act==='wa'){ sendWhatsApp(c); return; }
+      let i=stageIdx(c.stage);
+      if(act==='adv'&&i<STAGES.length-1) c.stage=STAGES[i+1].k;
+      if(act==='back'&&i>0) c.stage=STAGES[i-1].k;
+      persistCustomer(c); renderAll();
+    });
+  });
+  // tap card body to edit
+  document.querySelectorAll('.card').forEach(card=>{
+    card.addEventListener('click',e=>{
+      if(e.target.closest('.mv')) return;
+      const c=customers.find(x=>x.id===card.dataset.id); if(c) openDialog(c);
+    });
+  });
+  let dragId=null;
+  document.querySelectorAll('.card[draggable=true]').forEach(card=>{
+    card.addEventListener('dragstart',e=>{ dragId=card.dataset.id; e.dataTransfer.effectAllowed='move'; });
+  });
+  document.querySelectorAll('.col').forEach(col=>{
+    col.addEventListener('dragover',e=>{ e.preventDefault(); col.classList.add('drop'); });
+    col.addEventListener('dragleave',()=> col.classList.remove('drop'));
+    col.addEventListener('drop',e=>{
+      e.preventDefault(); col.classList.remove('drop');
+      const c=customers.find(x=>x.id===dragId); if(!c) return;
+      c.stage=col.dataset.stage; persistCustomer(c); renderAll();
+    });
+  });
+}
+
+/* ---------- Add / edit dialog ---------- */
+const dlg=document.getElementById('dlg');
+let editingId=null;
+function openDialog(c){
+  document.getElementById('custForm').reset();
+  editingId = c?c.id:null;
+  document.getElementById('dlgTitle').textContent = c?'Edit customer':'Add customer';
+  document.getElementById('fName').value = c?c.name:'';
+  document.getElementById('fPhone').value = c?(c.phone||''):'';
+  document.getElementById('fSource').value = c?(c.source||'Referral'):'Referral';
+  document.getElementById('fStage').value = c?c.stage:'lead';
+  document.getElementById('fPrice').value = c?(c.price||''):targets.price;
+  document.getElementById('fFreq').value = c?String(c.freq||0):'0';
+  document.getElementById('fNext').value = c?(c.nextClean||''):'';
+  document.getElementById('fNotes').value = c?(c.notes||''):'';
+  dlg.showModal();
+}
+document.getElementById('addBtn').addEventListener('click',()=>openDialog(null));
+document.getElementById('dlgCancel').addEventListener('click',()=>dlg.close());
+document.getElementById('dlgSave').addEventListener('click',()=>{
+  const name=document.getElementById('fName').value.trim();
+  if(!name){ document.getElementById('fName').focus(); return; }
+  const fields={
+    name, phone:document.getElementById('fPhone').value.trim(),
+    source:document.getElementById('fSource').value,
+    stage:document.getElementById('fStage').value,
+    price:Number(document.getElementById('fPrice').value)||0,
+    freq:Number(document.getElementById('fFreq').value)||0,
+    nextClean:document.getElementById('fNext').value||'',
+    notes:document.getElementById('fNotes').value.trim(),
+  };
+  let c;
+  if(editingId){ c=customers.find(x=>x.id===editingId); if(c) Object.assign(c,fields); }
+  else { c=Object.assign({id:'c'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),createdAt:Date.now()},fields); customers.push(c); }
+  if(c) persistCustomer(c);
+  editingId=null; renderAll(); dlg.close();
+});
+
+/* ---------- WhatsApp reminder ---------- */
+function sendWhatsApp(c){
+  const digits=(c.phone||'').replace(/\D/g,'');
+  const num = digits.length===10 ? '1'+digits : digits; // assume US +1
+  const when = c.nextClean ? fmtDate(c.nextClean, true) : 'your next visit';
+  const first=(c.name||'').split(/[\s—-]/)[0];
+  const msg=`Hi ${first}! This is K&F Total Clean 🧽 Just a reminder about your cleaning on ${when}. Reply to confirm — thank you! / ¡Gracias!`;
+  const url = (num?`https://wa.me/${num}`:`https://wa.me/`)+`?text=`+encodeURIComponent(msg);
+  window.open(url,'_blank');
+}
+
+/* ---------- Targets inputs ---------- */
+['tGoal','tPrice','tFreq'].forEach(idf=>{
+  document.getElementById(idf).addEventListener('input',()=>{
+    targets.goal=Math.max(1,Number(document.getElementById('tGoal').value)||1);
+    targets.price=Math.max(0,Number(document.getElementById('tPrice').value)||0);
+    targets.freq=Math.max(0,Number(document.getElementById('tFreq').value)||0);
+    persistTargets(); renderKpis(); renderTargets();
+  });
+});
+
+/* ---------- Tabs ---------- */
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected','false'));
+    t.setAttribute('aria-selected','true');
+    document.querySelectorAll('.panel').forEach(p=>p.hidden=true);
+    document.getElementById(t.dataset.panel).hidden=false;
+  });
+});
+
+/* ---------- Theme ---------- */
+const themeBtn=document.getElementById('themeBtn');
+themeBtn.addEventListener('click',()=>{
+  const cur=document.documentElement.getAttribute('data-theme');
+  const next = cur==='dark'?'light':(cur==='light'?'dark': (matchMedia('(prefers-color-scheme: dark)').matches?'light':'dark'));
+  document.documentElement.setAttribute('data-theme',next);
+  try{localStorage.setItem('knf_theme',next);}catch(e){}
+});
+try{const st=localStorage.getItem('knf_theme'); if(st) document.documentElement.setAttribute('data-theme',st);}catch(e){}
+
+/* ---------- utils ---------- */
+function esc(s){return String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
+function fmtDate(iso,long){
+  if(!iso) return '';
+  const p=String(iso).split('-').map(Number);
+  if(p.length!==3||!p[0]) return '';
+  const dt=new Date(p[0],p[1]-1,p[2]);
+  return dt.toLocaleDateString('en-US', long?{weekday:'long',month:'short',day:'numeric'}:{weekday:'short',month:'short',day:'numeric'});
+}
+
+/* ---------- boot ---------- */
+renderAll();
+initStore();
+setInterval(renderHeader, 60*60*1000);
+</script>
+</body>
+</html>
